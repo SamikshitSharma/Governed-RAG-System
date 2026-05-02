@@ -1,0 +1,5 @@
+-r ../requirements.txt
+fastapi
+python-multipart
+sse-starlette
+uvicorn[standard]

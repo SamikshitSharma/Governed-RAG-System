@@ -1,0 +1,14 @@
+chromadb
+fastapi
+anthropic
+openai
+pydantic
+pyyaml
+python-dotenv
+rich
+sse-starlette
+tqdm
+PyPDF2
+python-docx
+python-multipart
+uvicorn[standard]

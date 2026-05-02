@@ -1,0 +1,11 @@
+.env
+.venv
+.next
+node_modules
+logs
+__pycache__
+api/__pycache__
+data/raw_documents
+vector_db/chroma
+vector_db/chroma*
+npm-debug.log*

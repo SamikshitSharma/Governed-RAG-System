@@ -1,0 +1,71 @@
+PUBLIC API DOCUMENTATION
+Version 1.0 - Last Updated: February 2026
+
+OVERVIEW
+This document describes the public-facing REST API for our platform. All endpoints are publicly accessible with valid API keys.
+
+AUTHENTICATION
+All API requests must include a valid API key in the Authorization header:
+Authorization: Bearer YOUR_API_KEY
+
+API keys can be obtained by signing up at https://platform.example.com/signup
+
+RATE LIMITING
+- Free tier: 100 requests per hour
+- Pro tier: 1,000 requests per hour
+- Enterprise tier: Custom limits
+
+Rate limit information is returned in response headers:
+- X-RateLimit-Limit: Maximum requests allowed
+- X-RateLimit-Remaining: Remaining requests in current window
+- X-RateLimit-Reset: Timestamp when limit resets
+
+ENDPOINTS
+
+1. GET /api/v1/status
+Description: Check API health and status
+Authentication: Not required
+Response: { "status": "operational", "version": "1.0" }
+
+2. POST /api/v1/data/query
+Description: Query public datasets
+Authentication: Required
+Request Body:
+{
+  "query": "string",
+  "filters": { "key": "value" },
+  "limit": 100
+}
+Response: Array of matching records
+
+3. GET /api/v1/data/schema
+Description: Retrieve dataset schema information
+Authentication: Required
+Response: Schema definition object
+
+ERROR HANDLING
+The API uses standard HTTP status codes:
+- 200: Success
+- 400: Bad Request - Invalid parameters
+- 401: Unauthorized - Missing or invalid API key
+- 403: Forbidden - Insufficient permissions
+- 429: Too Many Requests - Rate limit exceeded
+- 500: Internal Server Error
+
+All error responses include a detailed message:
+{
+  "error": {
+    "code": "INVALID_REQUEST",
+    "message": "Missing required parameter: query"
+  }
+}
+
+BEST PRACTICES
+1. Always include error handling in your client code
+2. Implement exponential backoff for rate-limited requests
+3. Cache responses when appropriate to reduce API calls
+4. Use pagination for large result sets
+
+SUPPORT
+For API support, contact: api-support@example.com
+Developer forum: https://forum.example.com/api

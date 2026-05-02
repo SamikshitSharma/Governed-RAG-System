@@ -1,0 +1,153 @@
+Q4 2025 FINANCIAL REPORT
+STRICTLY CONFIDENTIAL - Authority: Financial
+For CFO, CEO, Board, and Finance Team Only
+
+FINANCIAL HIGHLIGHTS
+
+Revenue: $105.2M (23% YoY growth)
+Gross Profit: $78.9M (75% margin)
+Operating Expenses: $92.1M
+Net Loss: $(13.2M)
+Cash and Equivalents: $225M
+Burn Rate: $4.4M per month
+
+REVENUE BREAKDOWN
+
+By Product:
+- Platform License: $68.4M (65%)
+- Professional Services: $21.0M (20%)
+- Support & Maintenance: $15.8M (15%)
+
+By Customer Segment:
+- Enterprise (>$1M ARR): $52.6M (50%)
+- Mid-Market ($100K-$1M): $36.8M (35%)
+- SMB (<$100K): $15.8M (15%)
+
+By Geography:
+- North America: $84.2M (80%)
+- EMEA: $15.8M (15%)
+- APAC: $5.2M (5%)
+
+CUSTOMER METRICS
+
+Total Customers: 2,847
+Enterprise Customers: 125
+Net Revenue Retention: 118%
+Customer Acquisition Cost (CAC): $18,500
+Lifetime Value (LTV): $127,000
+LTV/CAC Ratio: 6.9x
+Churn Rate: 1.2% monthly
+
+New Customer Acquisition:
+- Q4 New Customers: 234
+- Average Contract Value: $45,000
+- Sales Cycle: 78 days (enterprise)
+
+Top 10 Customers:
+1. FinanceCorp: $4.2M ARR
+2. TechGiant Inc: $3.8M ARR
+3. RetailChain: $3.1M ARR
+4. HealthSystems: $2.9M ARR
+5. ManufacturingCo: $2.7M ARR
+6. MediaGroup: $2.4M ARR
+7. TelecomPlus: $2.2M ARR
+8. EduTech: $2.0M ARR
+9. LogisticsHub: $1.9M ARR
+10. EnergyProvider: $1.8M ARR
+
+EXPENSE BREAKDOWN
+
+Sales & Marketing: $42.3M (46% of OpEx)
+- Sales team: $28.1M
+- Marketing programs: $14.2M
+
+Research & Development: $31.5M (34% of OpEx)
+- Engineering salaries: $24.2M
+- Infrastructure and tools: $7.3M
+
+General & Administrative: $18.3M (20% of OpEx)
+- Executive compensation: $6.2M
+- Legal and compliance: $4.1M
+- Facilities and IT: $8.0M
+
+BALANCE SHEET
+
+Assets:
+- Current Assets: $238.5M
+  - Cash: $225.0M
+  - Accounts Receivable: $13.5M
+- Non-Current Assets: $42.8M
+  - Equipment and software: $18.3M
+  - Goodwill and intangibles: $24.5M
+
+Liabilities:
+- Current Liabilities: $28.7M
+  - Accounts payable: $12.4M
+  - Deferred revenue: $16.3M
+- Long-term debt: $0
+
+Shareholders' Equity: $252.6M
+
+CASH FLOW STATEMENT
+
+Operating Activities:
+- Net loss: $(13.2M)
+- Depreciation: $3.8M
+- Changes in working capital: $(2.1M)
+Net cash from operations: $(11.5M)
+
+Investing Activities:
+- Capital expenditures: $(5.2M)
+- Acquisitions: $0
+Net cash from investing: $(5.2M)
+
+Financing Activities:
+- Series C proceeds: $0
+- Debt payments: $0
+Net cash from financing: $0
+
+Net change in cash: $(16.7M)
+
+FINANCIAL PROJECTIONS
+
+Q1 2026 Forecast:
+- Revenue: $110M (5% sequential growth)
+- Gross margin: 76%
+- Operating expenses: $95M
+- Net loss: $(9M)
+- Burn rate: $3M/month
+
+Full Year 2026 Targets:
+- Revenue: $500M
+- Gross margin: 77%
+- EBITDA positive: Q3 2026
+- Cash runway: 18 months without additional funding
+
+KEY RISKS
+
+Financial Risks:
+- Concentration risk: Top 10 customers represent 30% of revenue
+- FX exposure increasing with international expansion
+- Extended payment terms for enterprise customers impacting cash flow
+
+Mitigation Strategies:
+- Customer diversification efforts
+- FX hedging program being implemented
+- Stricter payment terms for new contracts
+
+Compliance and Accounting:
+- SOC 2 Type II certification maintained
+- GAAP compliance audited by Big 4 firm
+- Tax planning for international operations
+- Stock option expense: $8.2M in Q4
+
+INSIDER INFORMATION
+
+The following information is material non-public information:
+- Major enterprise deal ($8M) expected to close in Q1 2026
+- Strategic partnership with major cloud provider in final negotiations
+- Series D fundraising initiated with target close in April 2026
+- Preliminary acquisition offer received for entire company
+
+Trading Window:
+All employees with access to this information are prohibited from trading company stock until information is publicly disclosed or no longer material.

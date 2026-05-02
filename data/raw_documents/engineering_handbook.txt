@@ -1,0 +1,101 @@
+ENGINEERING TEAM HANDBOOK
+Version 2.1 - Internal Use Only - Authority: Engineering
+
+DEVELOPMENT WORKFLOW
+
+Our engineering team follows an Agile Scrum methodology with two-week sprints. All code must pass automated tests and peer review before merging to main.
+
+CODE REVIEW PROCESS
+1. Create a feature branch from main
+2. Implement changes with tests
+3. Submit pull request with description
+4. Minimum 2 approvals required from senior engineers
+5. All CI checks must pass
+6. Merge using squash commits
+
+DEPLOYMENT PIPELINE
+We use a continuous deployment pipeline with the following stages:
+
+Development Environment:
+- Automatic deployment on merge to dev branch
+- Used for feature testing and integration
+- Database: dev-db.internal
+- URL: https://dev.platform.internal
+
+Staging Environment:
+- Deployment triggered manually after QA approval
+- Mirrors production configuration
+- Used for final validation and performance testing
+- Database: staging-db.internal
+- URL: https://staging.platform.internal
+
+Production Environment:
+- Deployment requires approval from tech lead and product manager
+- Blue-green deployment strategy with automatic rollback
+- Monitored 24/7 with PagerDuty alerts
+- Database: prod-db-primary.internal (with read replicas)
+- URL: https://platform.example.com
+
+ARCHITECTURE OVERVIEW
+Our system is built using a microservices architecture:
+
+API Gateway (Kong):
+- Handles authentication and rate limiting
+- Routes requests to appropriate services
+- Implements circuit breakers
+
+Core Services:
+- User Service (Node.js): Manages user accounts and authentication
+- Data Service (Python/FastAPI): Handles data processing and analytics
+- Storage Service (Go): Manages file uploads and retrieval
+- Notification Service (Node.js): Sends emails, SMS, and push notifications
+
+Infrastructure:
+- Kubernetes cluster on AWS EKS
+- PostgreSQL for relational data
+- Redis for caching and session storage
+- S3 for object storage
+- CloudFront CDN for static assets
+
+MONITORING AND OBSERVABILITY
+- Metrics: Prometheus + Grafana
+- Logs: ELK Stack (Elasticsearch, Logstash, Kibana)
+- Tracing: Jaeger for distributed tracing
+- Alerts: PagerDuty with escalation policies
+
+ON-CALL ROTATION
+Engineers participate in on-call rotation with one-week shifts.
+Primary on-call: Responds within 15 minutes
+Secondary on-call: Backup if primary is unavailable
+Escalation to engineering manager after 1 hour
+
+SECURITY PRACTICES
+- All secrets stored in AWS Secrets Manager
+- SSL/TLS for all communications
+- Regular security audits and penetration testing
+- Principle of least privilege for AWS IAM roles
+- Multi-factor authentication required for production access
+
+DATABASE MANAGEMENT
+- Weekly full backups, daily incremental backups
+- Point-in-time recovery available for 30 days
+- Read replicas for read-heavy workloads
+- Database migrations using Flyway
+- Connection pooling with PgBouncer
+
+TESTING REQUIREMENTS
+- Unit tests: Minimum 80% code coverage
+- Integration tests for all API endpoints
+- End-to-end tests for critical user flows
+- Performance tests before major releases
+- Security scanning with Snyk and SonarQube
+
+TECHNICAL DEBT
+We allocate 20% of each sprint to addressing technical debt. Engineers can propose debt items during sprint planning.
+
+DOCUMENTATION
+All code must include:
+- Inline comments for complex logic
+- README for each service
+- API documentation using OpenAPI/Swagger
+- Architecture decision records (ADRs) for major design choices
