@@ -2,7 +2,7 @@
 
 ---
 
-# 🖥️ System Demo
+# System Demo
 
 ![System UI](./screenshot.png)
 
