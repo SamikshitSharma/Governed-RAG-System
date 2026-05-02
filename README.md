@@ -1,21 +1,93 @@
-# Governed Cloud Hosted RAG System for Enterprise Knowledge Management
+# Governed RAG System for Enterprise Knowledge
 
-Unified enterprise RAG application with:
+A cloud-hosted Retrieval-Augmented Generation (RAG) platform that enforces **role-based access control, trust scoring, and evidence-backed responses** for enterprise-grade knowledge systems.
 
-- FastAPI backend as the production source of truth
-- Next.js frontend as the single front door
-- ChromaDB persistence for governed retrieval
-- Azure Container Apps deployment for API and UI
+---
 
-## Source Of Truth
+# Why This Exists
 
-- Production API: `https://rag-api.proudpebble-8567eb99.eastus.azurecontainerapps.io`
-- Frontend runtime wiring: `BACKEND_API_BASE_URL`
-- Azure persistence mount: `/mnt/chroma`
+Traditional AI systems:
 
-The frontend does not hardcode the Azure URL anymore. It calls the local Next route at `/api/query`, and that route proxies to the Azure-backed FastAPI service using `BACKEND_API_BASE_URL`.
+* hallucinate ❌
+* leak sensitive info ❌
+* lack accountability ❌
 
-## Local Setup
+This system solves that by introducing a **governed knowledge layer** where:
+
+* Access is controlled by **user roles**
+* Every answer is backed by **retrieved evidence**
+* Low-confidence outputs are **blocked or refused**
+* Responses are evaluated for **faithfulness + trust**
+
+---
+
+# Architecture
+
+```text
+User (Next.js UI)
+        ↓
+Next.js API Routes (/api/query)
+        ↓
+Azure Hosted FastAPI Backend
+        ↓
+RAG Pipeline
+  ├── Embeddings (OpenAI / Anthropic)
+  ├── ChromaDB (Vector Store)
+  ├── Retrieval Layer
+  ├── Decision Gate (RBAC + Trust)
+  └── Response Generator
+```
+
+---
+
+# Governance Model
+
+| Role      | Access Behavior                    |
+| --------- | ---------------------------------- |
+| Public    | Highly restricted, mostly refusals |
+| Auditor   | Evidence-focused access            |
+| Manager   | Partial operational insights       |
+| Executive | Full strategic access              |
+
+---
+
+# Key Capabilities
+
+* Role-Based Access Control (RBAC)
+* Trust & Faithfulness Scoring
+* Evidence-backed responses (with metadata)
+* Refusal system for unsafe queries
+* Azure-hosted backend (production-ready)
+* NDA corpus ingestion (~12K chunks)
+* Interactive command-center UI
+
+---
+
+# Live Backend
+
+```
+https://rag-api.proudpebble-8567eb99.eastus.azurecontainerapps.io
+```
+
+Frontend routes proxy requests through `/api/query` using:
+
+```
+BACKEND_API_BASE_URL
+```
+
+---
+
+# Tech Stack
+
+* **Frontend:** Next.js, Tailwind CSS
+* **Backend:** FastAPI
+* **Cloud:** Azure Container Apps
+* **Vector DB:** ChromaDB
+* **LLMs:** OpenAI / Anthropic
+
+---
+
+# Local Setup
 
 ```powershell
 py -3.11 -m venv .venv
@@ -25,7 +97,7 @@ npm install
 Copy-Item .env.template .env
 ```
 
-Required environment variables:
+# Environment Variables
 
 ```env
 OPENAI_API_KEY=
@@ -33,58 +105,89 @@ ANTHROPIC_API_KEY=
 BACKEND_API_BASE_URL=https://rag-api.proudpebble-8567eb99.eastus.azurecontainerapps.io
 ```
 
-## Run
+---
 
-Frontend against the Azure-backed API:
+# Run
+
+Frontend (recommended):
 
 ```powershell
 npm run dev:ui
 ```
 
-Backend locally when needed:
+Backend (optional local run):
 
 ```powershell
 npm run dev:api
 ```
 
-## NDA Corpus Ingestion
+---
 
-Bulk-ingest the NDA corpus into the existing vector store:
+# NDA Corpus Ingestion
 
 ```powershell
-py -3.11 main.py ingest --profile nda --replace-existing --source-dir "C:\Users\milug\OneDrive\Desktop\nda\files"
+py -3.11 main.py ingest --profile nda --replace-existing --source-dir "<your-nda-folder>"
 ```
 
-What the NDA ingestion pipeline does:
+# Pipeline Features
 
-- loads every PDF in the corpus
-- removes repeated headers, footers, and page-number noise
-- preserves clause-oriented sections before chunking
-- tags each chunk with NDA metadata such as `document_type`, `clause_type`, `page_number`, `batch_id`, and `sensitivity_level`
-- skips broken files gracefully and logs failures to `vector_db/ingest_failures.jsonl`
-- logs ingest batches to `vector_db/ingest_log.jsonl`
-- preserves original uploaded filenames and source paths when ingestion is performed through the Azure API
+* Cleans headers/footers automatically
+* Clause-aware chunking
+* Metadata tagging:
+
+  * document_type
+  * clause_type
+  * page_number
+  * sensitivity_level
+* Logs ingestion batches + failures
+
+---
 
 ## Query Behavior
 
-`/query` returns governed, grounded responses backed by the retrieved corpus:
+The `/query` endpoint enforces governance:
 
-- refusal when evidence is missing or weak
-- trust score derived from retrieval confidence, faithfulness, and citation density
-- faithfulness score from the evaluation step
-- traceable sources including page/clause metadata
+* Refuses when evidence is weak
+* Returns trust score
+* Returns faithfulness score
+* Provides traceable sources
 
-## Azure Deployment
+---
 
-Deploy both backend and frontend container apps:
+# Deployment
 
 ```powershell
 .\deploy.ps1
 ```
 
-Deployment wiring:
+* FastAPI → Azure Container Apps
+* Next.js → Azure Container Apps
+* ChromaDB → Azure File Share (`/mnt/chroma`)
 
-- `api/Dockerfile` builds the FastAPI service
-- `Dockerfile` builds the Next.js UI
-- `infra/main.bicep` deploys both apps and injects `BACKEND_API_BASE_URL` into the UI container
-- Chroma persists through the Azure Files share mounted at `/mnt/chroma`
+---
+
+# What Makes This Different
+
+This is **not just a chatbot**.
+
+It is a **governed AI system** that introduces:
+
+* Decision-layer validation
+* Evidence-first reasoning
+* Enterprise-safe AI interaction
+
+---
+
+# Author
+
+**Samikshit Sharma**
+Cloud Engineering • AI Systems • Distributed Architectures
+
+---
+
+# Future Enhancements
+
+* Multi-tenant RBAC
+* Audit dashboards
+* CI/CD pipeline
+* Model fine-tuning for domain accuracy
