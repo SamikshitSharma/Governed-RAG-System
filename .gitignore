@@ -13,3 +13,5 @@ vector_db/chroma_probe2/
 *.sqlite3
 *.sqlite3-journal
 logs/
+vector_db/governed_docs_openai.json
+vector_db/governed_docs_local.json
