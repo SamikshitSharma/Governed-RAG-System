@@ -1,5 +1,13 @@
 # Governed RAG System for Enterprise Knowledge
 
+---
+
+# 🖥️ System Demo
+
+![System UI](./screenshot.png)
+
+---
+
 A cloud-hosted Retrieval-Augmented Generation (RAG) platform that enforces **role-based access control, trust scoring, and evidence-backed responses** for enterprise-grade knowledge systems.
 
 ---
